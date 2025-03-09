@@ -22,8 +22,42 @@ function addEmployeeCard(name, position) {
     
     // adding functionality to remove the card when clicked 
     removeButton.addEventListener('click', (event) => {
-        event.stopPropagation(); // task 4 prevent the event from bubbling up
+        event.stopPropagation(); // (task 4) prevent the event from bubbling up
         card.remove(); // remove the card from the DOM
+    });
+
+    // Task 5: Inline Editing of Employee Details
+
+    // (Task 5) adding functionality when double-click on the card
+    card.addEventListener('dblclick', () => {
+        // allows to edit
+        const currentName = employeeName.textContent;
+        const currentPosition = employeePosition.textContent;
+
+        // replace editited info to show on card
+        employeeName.innerHTML = `<input type="text" value="${currentName}" />`;
+        employeePosition.innerHTML = `<input type="text" value="${currentPosition}" />`;
+
+        // create save button and show info 
+        const saveButton = document.createElement('button'); // create save button
+        saveButton.textContent = 'Save';
+        saveButton.setAttribute('class', 'save-btn');
+        
+        saveButton.addEventListener('click', () => { 
+            // get the updated values from the input fields
+            const updatedName = employeeName.querySelector('input').value;
+            const updatedPosition = employeePosition.querySelector('input').value;
+
+            // update the employee card with new values
+            employeeName.textContent = updatedName;
+            employeePosition.textContent = updatedPosition;
+
+            // remove the "save" button after pressing save
+            saveButton.remove();
+        });
+
+        // append the "save" button to the card
+        card.appendChild(saveButton);
     });
 
      // appending the elements to the container (name, postion, remove button)
@@ -60,7 +94,7 @@ function updateEmployeeCards() {
 updateEmployeeCards();
 
 
-// 
+
 
 
 

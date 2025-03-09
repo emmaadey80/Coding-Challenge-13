@@ -2,7 +2,7 @@
 
 // function to create employee card
 function addEmployeeCard(name, position) {
-    
+
     // creating a new div for the employee card
     const card = document.createElement('div');
     card.setAttribute('class', 'employee-card');
@@ -38,6 +38,25 @@ function addEmployeeCard(name, position) {
 addEmployeeCard('Jeigh Ives', 'Engineer at NASA'); // output: Jeigh Ives Engineer at NASA
 addEmployeeCard('Alex Adey', 'Nurse at St. Josephs'); // output: Alex Adey Nurse at St. Josepshs
 addEmployeeCard('Sam Reynolds', 'PA at Tampa General'); // output: Sam Reynolds PA at Tampa General
+
+// Task 3: Converting NodeLists to Arrays for Bulk Updates
+
+function updateEmployeeCards() {
+    // use selectorAll to select all employee cards
+    const employeeCards = document.querySelectorAll('.employee-card');
+
+    // convert NodeList to an array using Array.from() or the spread operator
+    const employeeCardsArray = Array.from(employeeCards);  
+
+    // loop through each employee card and apply a style update or add a highlighting class
+    employeeCardsArray.forEach((card) => {
+        card.style.backgroundColor = 'lightpink'; // change background color of each card to pink
+        card.style.border = '2px solid purple'; // add purple boarder
+    });
+}
+
+// call the updateEmployeeCards function to highlight all employee cards
+updateEmployeeCards();
 
 
 

@@ -20,9 +20,10 @@ function addEmployeeCard(name, position) {
     removeButton.textContent = 'Remove';
     removeButton.setAttribute('class', 'remove-btn');
     
-    // adding functionality to remove the card when clicked
-    removeButton.addEventListener('click', () => {
-        card.remove();
+    // adding functionality to remove the card when clicked 
+    removeButton.addEventListener('click', (event) => {
+        event.stopPropagation(); // task 4 prevent the event from bubbling up
+        card.remove(); // remove the card from the DOM
     });
 
      // appending the elements to the container (name, postion, remove button)
@@ -57,6 +58,9 @@ function updateEmployeeCards() {
 
 // call the updateEmployeeCards function to highlight all employee cards
 updateEmployeeCards();
+
+
+// 
 
 
 
